@@ -35,7 +35,9 @@ module Kernel
       Rubinius::VariableScope.of_sender,
       Rubinius::CompiledMethod.of_sender,
       Rubinius::StaticScope.of_sender,
-      self)
+      self,
+      Rubinius.mri_backtrace(1).first ? Rubinius.mri_backtrace(1).first[1] : 1
+    )
   end
   module_function :binding
 
